@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Create Order{% endblock %}
+
+{% block content %}
+<h1>Create Order</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    <div class="card">
+        <div class="form-group">
+            <label for="{{ form.book_id.id_for_label }}">Book:</label>
+            {{ form.book_id }}
+            {{ form.book_id.errors }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.plated_end_at.id_for_label }}">Planned end date:</label>
+            {{ form.plated_end_at }}
+            {{ form.plated_end_at.errors }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Order</button>
+    </div>
+</form>
+{% endblock %}

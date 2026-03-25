@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Library{% endblock %}
+
+{% block content %}
+<h1>Login</h1>
+
+{% if form.non_field_errors %}
+<div class="errors">
+    {% for error in form.non_field_errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="card">
+    <form method="post" action="{% url 'authentication:login' %}">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.password.id_for_label }}">Password</label>
+            {{ form.password }}
+            {{ form.password.errors }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+        <a href="{% url 'authentication:register' %}" style="margin-left: 15px;">Don't have an account? Register</a>
+    </form>
+</div>
+{% endblock %}

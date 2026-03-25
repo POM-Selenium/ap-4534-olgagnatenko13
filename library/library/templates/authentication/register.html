@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Register - Library{% endblock %}
+
+{% block content %}
+<h1>Register</h1>
+
+{% if form.non_field_errors %}
+<div class="errors">
+    {% for error in form.non_field_errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="card">
+    <form method="post" action="{% url 'authentication:register' %}">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="{{ form.first_name.id_for_label }}">First Name *</label>
+            {{ form.first_name }}
+            {{ form.first_name.errors }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.last_name.id_for_label }}">Last Name *</label>
+            {{ form.last_name }}
+            {{ form.last_name.errors }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.middle_name.id_for_label }}">Middle Name</label>
+            {{ form.middle_name }}
+            {{ form.middle_name.errors }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.role.id_for_label }}">Role *</label>
+            {{ form.role }}
+            {{ form.role.errors }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email *</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.password.id_for_label }}">Password *</label>
+            {{ form.password }}
+            {{ form.password.errors }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.password_confirm.id_for_label }}">Confirm Password *</label>
+            {{ form.password_confirm }}
+            {{ form.password_confirm.errors }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Register</button>
+        <a href="{% url 'authentication:login' %}" style="margin-left: 15px;">Already have an account? Login</a>
+    </form>
+</div>
+{% endblock %}
