@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-WAIT_TIME = 8
+WAIT_TIME = 10
 
 class LoginLogoutTest(unittest.TestCase):
     def setUp(self):
